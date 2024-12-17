@@ -1,0 +1,42 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Directories
+bin/
+build/
+vendor/
+
+# Logs and debugging
+*.log
+*.trace
+
+# Go build artifacts
+*.o
+*.a
+
+# IDE/editor-specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+
+# Test coverage files
+*.cover
+coverage.out
+
+# Dependency cache (if used by some tools)
+*.cache
