@@ -1,0 +1,162 @@
+[
+  {
+    "firstname": "John",
+    "lastname": "Doe",
+    "username": "jdoe01",
+    "email": "john.doe01@example.com",
+    "password": "P@ssw0rd1",
+    "is_admin": false
+  },
+  {
+    "firstname": "Jane",
+    "lastname": "Smith",
+    "username": "jsmith02",
+    "email": "jane.smith02@example.com",
+    "password": "P@ssw0rd2",
+    "is_admin": false
+  },
+  {
+    "firstname": "Michael",
+    "lastname": "Brown",
+    "username": "mbrown03",
+    "email": "michael.brown03@example.com",
+    "password": "P@ssw0rd3",
+    "is_admin": false
+  },
+  {
+    "firstname": "Emily",
+    "lastname": "Davis",
+    "username": "edavis04",
+    "email": "emily.davis04@example.com",
+    "password": "P@ssw0rd4",
+    "is_admin": false
+  },
+  {
+    "firstname": "David",
+    "lastname": "Miller",
+    "username": "dmiller05",
+    "email": "david.miller05@example.com",
+    "password": "P@ssw0rd5",
+    "is_admin": false
+  },
+  {
+    "firstname": "Sarah",
+    "lastname": "Wilson",
+    "username": "swilson06",
+    "email": "sarah.wilson06@example.com",
+    "password": "P@ssw0rd6",
+    "is_admin": false
+  },
+  {
+    "firstname": "James",
+    "lastname": "Moore",
+    "username": "jmoore07",
+    "email": "james.moore07@example.com",
+    "password": "P@ssw0rd7",
+    "is_admin": false
+  },
+  {
+    "firstname": "Laura",
+    "lastname": "Taylor",
+    "username": "ltaylor08",
+    "email": "laura.taylor08@example.com",
+    "password": "P@ssw0rd8",
+    "is_admin": false
+  },
+  {
+    "firstname": "Robert",
+    "lastname": "Anderson",
+    "username": "randerson09",
+    "email": "robert.anderson09@example.com",
+    "password": "P@ssw0rd9",
+    "is_admin": false
+  },
+  {
+    "firstname": "Megan",
+    "lastname": "Thomas",
+    "username": "mthomas10",
+    "email": "megan.thomas10@example.com",
+    "password": "P@ssw0rd10",
+    "is_admin": false
+  },
+  {
+    "firstname": "Andrew",
+    "lastname": "Jackson",
+    "username": "ajackson11",
+    "email": "andrew.jackson11@example.com",
+    "password": "P@ssw0rd11",
+    "is_admin": false
+  },
+  {
+    "firstname": "Hannah",
+    "lastname": "White",
+    "username": "hwhite12",
+    "email": "hannah.white12@example.com",
+    "password": "P@ssw0rd12",
+    "is_admin": false
+  },
+  {
+    "firstname": "Joshua",
+    "lastname": "Harris",
+    "username": "jharris13",
+    "email": "joshua.harris13@example.com",
+    "password": "P@ssw0rd13",
+    "is_admin": false
+  },
+  {
+    "firstname": "Olivia",
+    "lastname": "Martin",
+    "username": "omartin14",
+    "email": "olivia.martin14@example.com",
+    "password": "P@ssw0rd14",
+    "is_admin": false
+  },
+  {
+    "firstname": "Daniel",
+    "lastname": "Thompson",
+    "username": "dthompson15",
+    "email": "daniel.thompson15@example.com",
+    "password": "P@ssw0rd15",
+    "is_admin": false
+  },
+  {
+    "firstname": "Sophia",
+    "lastname": "Garcia",
+    "username": "sgarcia16",
+    "email": "sophia.garcia16@example.com",
+    "password": "P@ssw0rd16",
+    "is_admin": false
+  },
+  {
+    "firstname": "Matthew",
+    "lastname": "Martinez",
+    "username": "mmartinez17",
+    "email": "matthew.martinez17@example.com",
+    "password": "P@ssw0rd17",
+    "is_admin": false
+  },
+  {
+    "firstname": "Isabella",
+    "lastname": "Robinson",
+    "username": "irobinson18",
+    "email": "isabella.robinson18@example.com",
+    "password": "P@ssw0rd18",
+    "is_admin": false
+  },
+  {
+    "firstname": "Ryan",
+    "lastname": "Clark",
+    "username": "rclark19",
+    "email": "ryan.clark19@example.com",
+    "password": "P@ssw0rd19",
+    "is_admin": false
+  },
+  {
+    "firstname": "Grace",
+    "lastname": "Lewis",
+    "username": "glewis20",
+    "email": "grace.lewis20@example.com",
+    "password": "P@ssw0rd20",
+    "is_admin": false
+  }
+]

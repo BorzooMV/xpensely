@@ -1,12 +1,15 @@
 package router
 
 import (
+	"database/sql"
+
 	"github.com/BorzooMV/xpensely/internal/handlers"
 	"github.com/labstack/echo/v4"
 )
 
-func UsersRouter(e *echo.Echo) {
-	e.GET(Paths["home"], handlers.HandleUsers)
+func UsersRouter(e *echo.Echo, db *sql.DB) {
+	handler := handlers.UserHandler{Db: db}
+	e.GET(Paths["users"], handler.GetAllUsers)
 	// e.POST
 	// ...
 }

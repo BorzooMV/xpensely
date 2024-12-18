@@ -1,5 +1,9 @@
 package router
 
+var v1Users = "api/v1/users"
+
+// var v1Expenses = "api/v1/expenses"
+
 var Paths = map[string]string{
-	"home": "/",
+	"users": v1Users,
 }
