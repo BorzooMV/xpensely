@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    container_name: x-db
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - xpensely-postgres:/var/lib/postgresql/data
+volumes:
+  xpensely-postgres:
