@@ -20,6 +20,8 @@ func main() {
 
 	fmt.Println("Start cleaning database...")
 	db.Exec("DELETE FROM users;")
+	db.Exec("DELETE FROM expenses;")
 	fmt.Println("Database is empty")
 	db.Exec("ALTER SEQUENCE users_id_seq RESTART WITH 1")
+	db.Exec("ALTER SEQUENCE expenses_id_seq RESTART WITH 1")
 }

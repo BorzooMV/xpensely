@@ -1,0 +1,27 @@
+[
+  {
+    "user_id": 1,
+    "amount": 150.0,
+    "description": "Payment for services rendered"
+  },
+  { "user_id": 2, "amount": 75.5, "description": "Refund for returned item" },
+  { "user_id": 1, "amount": 200.25, "description": "Monthly subscription fee" },
+  { "user_id": 2, "amount": 50.0, "description": "Gift card purchase" },
+  { "user_id": 1, "amount": 300.0, "description": "Consultation fee" },
+  { "user_id": 2, "amount": 120.75, "description": "Online course fee" },
+  { "user_id": 1, "amount": 45.6, "description": "Book purchase" },
+  { "user_id": 2, "amount": 89.99, "description": "Electronics purchase" },
+  { "user_id": 1, "amount": 60.0, "description": "Dinner expense" },
+  { "user_id": 2, "amount": 30.0, "description": "Coffee shop visit" },
+  { "user_id": 1, "amount": 15.0, "description": "Stationery supplies" },
+  { "user_id": 2, "amount": 250.0, "description": "Event ticket purchase" },
+  { "user_id": 1, "amount": 100.0, "description": "Gym membership fee" },
+  { "user_id": 2, "amount": 200.0, "description": "Travel expenses" },
+  { "user_id": 1, "amount": 500.0, "description": "Freelance project payment" },
+  { "user_id": 2, "amount": 35.0, "description": "Movie tickets" },
+  { "user_id": 1, "amount": 80.0, "description": "Grocery shopping" },
+  { "user_id": 2, "amount": 60.5, "description": "Clothing purchase" },
+  { "user_id": 1, "amount": 90.0, "description": "Home repair services" },
+  { "user_id": 2, "amount": 120.0, "description": "Photography session" },
+  { "user_id": 1, "amount": 45.0, "description": "Music concert tickets" }
+]
