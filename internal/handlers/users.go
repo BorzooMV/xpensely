@@ -47,11 +47,13 @@ func (u *UserHandler) GetSingleUser(c echo.Context) error {
 	FROM users
 	WHERE id = $1;
 	`
-	id := c.Param("id")
-	row := u.Db.QueryRow(getSingleUserQs, id)
+	row := u.Db.QueryRow(getSingleUserQs, c.Param("id"))
 	user := models.User{}
 	err := row.Scan(&user.Id, &user.Firstname, &user.Lastname, &user.Username, &user.Email, &user.CreatedAt, &user.UpdatedAt, &user.IsAdmin)
 	if err != nil {
+		if err == sql.ErrNoRows {
+			return utils.SendErrorResponse(c, http.StatusNotFound, "User not found!")
+		}
 		return utils.SendErrorResponse(c, http.StatusInternalServerError, fmt.Sprintf("Failed to scan data: %v", err.Error()))
 	}
 
@@ -91,5 +93,30 @@ func (u *UserHandler) CreateUser(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, map[string]string{
 		"user_id": Res.Id,
+	})
+}
+
+func (u *UserHandler) DeleteUser(c echo.Context) error {
+	deleteUserQs := `
+	DELETE from users
+	WHERE id = $1;
+	`
+
+	result, err := u.Db.Exec(deleteUserQs, c.Param("id"))
+	if err != nil {
+		return utils.SendErrorResponse(c, http.StatusNotFound, fmt.Sprintf("Couldn't delete requested user: %v", err.Error()))
+	}
+
+	count, err := result.RowsAffected()
+	if err != nil {
+		return utils.SendErrorResponse(c, http.StatusInternalServerError, fmt.Sprintf("Couldn't determine affected row: %v", err.Error()))
+	}
+
+	if count == 0 {
+		return utils.SendErrorResponse(c, http.StatusNotFound, "User not found!")
+	}
+
+	return c.JSON(http.StatusOK, map[string]string{
+		"user_id": c.Param("id"),
 	})
 }

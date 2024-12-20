@@ -12,4 +12,5 @@ func UsersRouter(e *echo.Echo, db *sql.DB) {
 	e.GET(Paths["users"], handler.GetAllUsers)
 	e.POST(Paths["users"], handler.CreateUser)
 	e.GET(Paths["userWithId"], handler.GetSingleUser)
+	e.DELETE(Paths["userWithId"], handler.DeleteUser)
 }
