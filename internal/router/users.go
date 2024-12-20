@@ -11,4 +11,5 @@ func UsersRouter(e *echo.Echo, db *sql.DB) {
 	handler := handlers.UserHandler{Db: db}
 	e.GET(Paths["users"], handler.GetAllUsers)
 	e.POST(Paths["users"], handler.CreateUser)
+	e.GET(Paths["userWithId"], handler.GetSingleUser)
 }

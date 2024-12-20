@@ -23,9 +23,7 @@ func (u *UserHandler) GetAllUsers(c echo.Context) error {
 	`
 	rows, err := u.Db.Query(getAllUsersQs)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, map[string]string{
-			"error": fmt.Sprintf("Failed to query database: %v", err.Error()),
-		})
+		return utils.SendErrorResponse(c, http.StatusInternalServerError, fmt.Sprintf("Failed to query database: %v", err.Error()))
 	}
 	defer rows.Close()
 
@@ -34,14 +32,30 @@ func (u *UserHandler) GetAllUsers(c echo.Context) error {
 		var u models.User
 		err := rows.Scan(&u.Id, &u.Firstname, &u.Lastname, &u.Username, &u.Email, &u.CreatedAt, &u.UpdatedAt, &u.IsAdmin)
 		if err != nil {
-			return c.JSON(http.StatusInternalServerError, map[string]string{
-				"error": fmt.Sprintf("Failed to scan data: %v", err.Error()),
-			})
+			return utils.SendErrorResponse(c, http.StatusInternalServerError, fmt.Sprintf("Failed to scan data: %v", err.Error()))
 		}
 		users = append(users, u)
 	}
 
 	return c.JSON(http.StatusOK, users)
+}
+
+func (u *UserHandler) GetSingleUser(c echo.Context) error {
+	getSingleUserQs := `
+	SELECT 
+	id, firstname, lastname, username, email, created_at, updated_at, is_admin
+	FROM users
+	WHERE id = $1;
+	`
+	id := c.Param("id")
+	row := u.Db.QueryRow(getSingleUserQs, id)
+	user := models.User{}
+	err := row.Scan(&user.Id, &user.Firstname, &user.Lastname, &user.Username, &user.Email, &user.CreatedAt, &user.UpdatedAt, &user.IsAdmin)
+	if err != nil {
+		return utils.SendErrorResponse(c, http.StatusInternalServerError, fmt.Sprintf("Failed to scan data: %v", err.Error()))
+	}
+
+	return c.JSON(http.StatusOK, user)
 }
 
 func (u *UserHandler) CreateUser(c echo.Context) error {
