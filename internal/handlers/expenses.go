@@ -50,9 +50,9 @@ func (h *ExpensesHandler) GetAllExpensesOfSingleUser(e echo.Context) error {
 
 func (h *ExpensesHandler) CreateNewExpense(e echo.Context) error {
 	var Request struct {
-		UserId      int     `json:"user_id"`
-		Amount      float64 `json:"amount"`
-		Description string  `json:"description"`
+		UserId      int     `json:"user_id" validate:"required,number"`
+		Amount      float64 `json:"amount" validate:"required,number,min=0"`
+		Description string  `json:"description" validate:"required,max=255"`
 	}
 
 	var Response struct {
@@ -70,6 +70,10 @@ func (h *ExpensesHandler) CreateNewExpense(e echo.Context) error {
 	err := json.NewDecoder(e.Request().Body).Decode(&Request)
 	if err != nil {
 		return utils.SendErrorResponse(e, http.StatusInternalServerError, fmt.Sprintf("Couldn't decode requested body: %v", err.Error()))
+	}
+
+	if err := e.Validate(&Request); err != nil {
+		return utils.SendErrorResponse(e, http.StatusBadRequest, err.Error())
 	}
 
 	row := h.Db.QueryRow(createNewExpenseQs, Request.UserId, Request.Amount, Request.Description)
