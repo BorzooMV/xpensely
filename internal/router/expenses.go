@@ -13,4 +13,5 @@ func ExpensesRouter(e *echo.Echo, db *sql.DB) {
 	}
 
 	e.GET(Paths["expensesOfSingleUser"], handler.GetAllExpensesOfSingleUser)
+	e.POST(Paths["expenses"], handler.CreateNewExpense)
 }

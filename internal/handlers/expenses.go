@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"database/sql"
+	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -45,4 +46,41 @@ func (h *ExpensesHandler) GetAllExpensesOfSingleUser(e echo.Context) error {
 
 	Response.Count = len(Response.Expenses)
 	return e.JSON(http.StatusOK, Response)
+}
+
+func (h *ExpensesHandler) CreateNewExpense(e echo.Context) error {
+	var Request struct {
+		UserId      int     `json:"user_id"`
+		Amount      float64 `json:"amount"`
+		Description string  `json:"description"`
+	}
+
+	var Response struct {
+		ExpenseId string `json:"id"`
+	}
+
+	createNewExpenseQs := `
+	INSERT INTO expenses
+	(user_id, amount, description)
+	VALUES
+	($1, $2, $3)
+	RETURNING id;
+	`
+
+	err := json.NewDecoder(e.Request().Body).Decode(&Request)
+	if err != nil {
+		return utils.SendErrorResponse(e, http.StatusInternalServerError, fmt.Sprintf("Couldn't decode requested body: %v", err.Error()))
+	}
+
+	row := h.Db.QueryRow(createNewExpenseQs, Request.UserId, Request.Amount, Request.Description)
+
+	err = row.Scan(&Response.ExpenseId)
+	if err != nil {
+		return utils.SendErrorResponse(e, http.StatusInternalServerError, fmt.Sprintf("couldn't scan database response: %v", err.Error()))
+	}
+
+	return e.JSON(http.StatusOK, map[string]string{
+		"expense_id": Response.ExpenseId,
+	})
+
 }
