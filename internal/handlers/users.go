@@ -65,16 +65,20 @@ func (u *UserHandler) CreateUser(c echo.Context) error {
 		Id string `json:"id"`
 	}
 	var Req struct {
-		Firstname string `json:"firstname"`
-		Lastname  string `json:"lastname"`
-		Username  string `json:"username"`
-		Email     string `json:"email"`
-		Password  string `json:"password"`
+		Firstname string `json:"firstname" validate:"min=3,max=50"`
+		Lastname  string `json:"lastname" validate:"min=3,max=50"`
+		Username  string `json:"username" validate:"min=3,max=50,required"`
+		Email     string `json:"email" validate:"max=50,required,email"`
+		Password  string `json:"password" validate:"min=8,max=50,required"`
 	}
 
 	err := json.NewDecoder(c.Request().Body).Decode(&Req)
 	if err != nil {
 		return utils.SendErrorResponse(c, http.StatusInternalServerError, fmt.Sprintf("Can't decode request body:%v", err.Error()))
+	}
+
+	if err := c.Validate(&Req); err != nil {
+		return utils.SendErrorResponse(c, http.StatusBadRequest, err.Error())
 	}
 
 	createUserQs := `
