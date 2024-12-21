@@ -3,10 +3,10 @@ package router
 import "fmt"
 
 var v1Users = "api/v1/users"
-
-// var v1Expenses = "api/v1/expenses"
+var v1Expenses = "api/v1/expenses"
 
 var Paths = map[string]string{
-	"users":      v1Users,
-	"userWithId": fmt.Sprintf("%v/:id", v1Users),
+	"users":                v1Users,
+	"userWithId":           fmt.Sprintf("%v/:id", v1Users),
+	"expensesOfSingleUser": fmt.Sprintf("%v/:id", v1Expenses),
 }
