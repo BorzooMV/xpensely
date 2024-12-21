@@ -15,6 +15,7 @@ type ExpensesHandler struct {
 	Db *sql.DB
 }
 
+// TODO: add validation if requested user exists in the database or not
 func (h *ExpensesHandler) GetAllExpensesOfSingleUser(e echo.Context) error {
 	var Response struct {
 		Count    int              `json:"count"`
