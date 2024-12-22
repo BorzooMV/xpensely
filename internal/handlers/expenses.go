@@ -15,11 +15,25 @@ type ExpensesHandler struct {
 	Db *sql.DB
 }
 
-// TODO: add validation if requested user exists in the database or not
 func (h *ExpensesHandler) GetAllExpensesOfSingleUser(e echo.Context) error {
 	var Response struct {
 		Count    int              `json:"count"`
 		Expenses []models.Expense `json:"expenses"`
+	}
+	var userExists bool
+
+	isUserExistsQs := `
+		SELECT EXISTS(
+			SELECT 1 FROM users WHERE id = $1
+		);
+	`
+	row := h.Db.QueryRow(isUserExistsQs, e.Param("id"))
+	err := row.Scan(&userExists)
+	if err != nil {
+		return utils.SendErrorResponse(e, http.StatusInternalServerError, fmt.Sprintf("Couldn't query database: %v", err.Error()))
+	}
+	if !userExists {
+		return utils.SendErrorResponse(e, http.StatusNotFound, "User not found")
 	}
 
 	getExpensesOfSingleUserQs := `
