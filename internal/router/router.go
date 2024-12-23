@@ -9,4 +9,5 @@ import (
 func HandleRoutes(e *echo.Echo, db *sql.DB) {
 	UsersRouter(e, db)
 	ExpensesRouter(e, db)
+	Auth(e, db)
 }
