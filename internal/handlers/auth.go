@@ -59,6 +59,6 @@ func (h *AuthHandler) AuthenticateUser(e echo.Context) error {
 	}
 
 	return e.JSON(http.StatusOK, map[string]string{
-		"token": jwt,
+		"token": fmt.Sprintf("Bearer %v", jwt),
 	})
 }

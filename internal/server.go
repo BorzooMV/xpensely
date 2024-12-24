@@ -3,6 +3,7 @@ package internal
 import (
 	"database/sql"
 
+	"github.com/BorzooMV/xpensely/internal/middlewares"
 	"github.com/BorzooMV/xpensely/internal/router"
 	"github.com/go-playground/validator/v10"
 	"github.com/labstack/echo/v4"
@@ -22,6 +23,7 @@ func CreateEchoServer(db *sql.DB) *echo.Echo {
 	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
 		Format: "method=${method}, uri=${uri}, status=${status}\n",
 	}))
+	e.Use(middlewares.Authenticate)
 	validate := validator.New(validator.WithRequiredStructEnabled())
 	e.Validator = &CustomValidator{Validator: validate}
 	router.HandleRoutes(e, db)
