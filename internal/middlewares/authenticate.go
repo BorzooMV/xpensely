@@ -8,9 +8,14 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+var unguardedRoutes = map[string]string{
+	router.Paths["users"]: http.MethodPost,
+	router.Paths["auth"]:  http.MethodPost,
+}
+
 func Authenticate(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
-		if c.Request().RequestURI == router.Paths["auth"] {
+		if method, ok := unguardedRoutes[c.Request().RequestURI]; ok && c.Request().Method == method {
 			return next(c)
 		}
 
