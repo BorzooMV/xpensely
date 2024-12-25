@@ -107,6 +107,7 @@ func (u *UserHandler) CreateUser(c echo.Context) error {
 	})
 }
 
+// TODO: invalidate user's token when deleted
 func (u *UserHandler) DeleteUser(c echo.Context) error {
 	deleteUserQs := `
 	DELETE from users
