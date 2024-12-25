@@ -48,8 +48,7 @@ func (h *AuthHandler) AuthenticateUser(e echo.Context) error {
 		return utils.SendErrorResponse(e, http.StatusInternalServerError, fmt.Sprintf("Couldn't scan fetched body from database: %v", err.Error()))
 	}
 
-	// TODO: Encrypt and decrypt password
-	if Req.Password != StoredUser.Password {
+	if err := utils.ValidatePassword(StoredUser.Password, Req.Password); err != nil {
 		return utils.SendErrorResponse(e, http.StatusBadRequest, "Password is incorrect")
 	}
 

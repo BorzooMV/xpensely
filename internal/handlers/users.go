@@ -81,6 +81,13 @@ func (u *UserHandler) CreateUser(c echo.Context) error {
 		return utils.SendErrorResponse(c, http.StatusBadRequest, err.Error())
 	}
 
+	hashedPassword, err := utils.EncryptPassword(Req.Password)
+	if err != nil {
+		return utils.SendErrorResponse(c, http.StatusInternalServerError, fmt.Sprintf("Couldn't hash the password: %v", err.Error()))
+	}
+
+	Req.Password = string(hashedPassword)
+
 	createUserQs := `
 	INSERT INTO users
 	(firstname, lastname, username, email, password)
