@@ -40,3 +40,6 @@ coverage.out
 
 # Dependency cache (if used by some tools)
 *.cache
+
+# Secret config files
+redis.conf

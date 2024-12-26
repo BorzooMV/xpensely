@@ -1,0 +1,8 @@
+# Enable protected mode for security
+protected-mode <is protected>
+
+# Enable password authentication 
+requirepass "<password>"
+
+# Set the port Redis will listen on
+port <port>
