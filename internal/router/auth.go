@@ -13,4 +13,5 @@ func Auth(e *echo.Echo, db *sql.DB) {
 	}
 
 	e.POST(Paths["auth"], handler.AuthenticateUser)
+	e.POST(Paths["refreshToken"], handler.RefreshAccessToken)
 }

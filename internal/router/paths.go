@@ -12,4 +12,5 @@ var Paths = map[string]string{
 	"expenses":             v1Expenses,
 	"expensesOfSingleUser": fmt.Sprintf("%v/:id", v1Expenses),
 	"auth":                 v1Auth,
+	"refreshToken":         fmt.Sprintf("%v/refresh", v1Auth),
 }

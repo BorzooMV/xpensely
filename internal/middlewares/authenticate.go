@@ -9,8 +9,9 @@ import (
 )
 
 var unguardedRoutes = map[string]string{
-	router.Paths["users"]: http.MethodPost,
-	router.Paths["auth"]:  http.MethodPost,
+	router.Paths["users"]:        http.MethodPost,
+	router.Paths["auth"]:         http.MethodPost,
+	router.Paths["refreshToken"]: http.MethodPost,
 }
 
 func Authenticate(next echo.HandlerFunc) echo.HandlerFunc {
